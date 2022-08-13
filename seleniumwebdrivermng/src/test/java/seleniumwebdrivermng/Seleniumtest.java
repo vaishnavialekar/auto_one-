@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -51,17 +52,33 @@ public class Seleniumtest {
 			}
 		}
 
-			driver.findElement(By.id("to")).sendKeys("nagpur");
+			driver.findElement(By.id("to")).sendKeys("Nagpur, Dr Babasaheb Ambedkar International Airport Sonegaon Airport, NAG, India");
 
 			List<WebElement> mylist1 = driver.findElements(By.xpath("//*[@id=\"ui-id-839\"]"));
 
 			for (WebElement option : mylist1) {
-				if (option.getText().contains("Nagpur, Dr Babasaheb Ambedkar International Airport Sonegaon Airport, NAG, India")) {
+				if (option.getText().equalsIgnoreCase("Nagpur, Dr Babasaheb Ambedkar International Airport Sonegaon Airport, NAG, India")) {
 					option.click();
 					break;
 				}
+			
+			/*for (WebElement option : mylist1) {
+				if (option.getText().contains("Nagpur, Dr Babasaheb Ambedkar International Airport Sonegaon Airport, NAG, India")) {
+					//option.click();
+					break;
+				} */
+				
 			}
-
+			
+			
+			driver.findElement(By.xpath("//*[@id=\"id_1\"]/img")).click();
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+			driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div[1]/table/tbody/tr[2]/td[7]/a")).click();
+			
+			
+			Select drpdown = new Select (driver.findElement(By.id ("ddladult1")));
+			drpdown.selectByValue("3");			
+			
 			// driver.findElement(By.xpath("//*[@id=\"loginPageId\"]/div[2]/div/form/div[1]/div/div/input")).sendKeys("UG3034");
 			// driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys("Neml@1234");
 			// driver.findElement(By.xpath("//*[@id=\"loginPageId\"]/div[2]/div/form/div[3]/button")).click();
