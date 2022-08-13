@@ -73,12 +73,31 @@ public class Seleniumtest {
 			
 			driver.findElement(By.xpath("//*[@id=\"id_1\"]/img")).click();
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
-			driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/div[1]/table/tbody/tr[2]/td[7]/a")).click();
+			driver.findElement(By.xpath("//a[@class='ui-state-default ui-state-active']")).click();
 			
 			
-			Select drpdown = new Select (driver.findElement(By.id ("ddladult1")));
-			drpdown.selectByValue("3");			
+			Select drpdownadlts = new Select (driver.findElement(By.id ("ddladult1")));
+			drpdownadlts.selectByValue("3");			
+
+			Select drpdownchld = new Select (driver.findElement(By.id ("ddlchildren1")));
+			drpdownchld.selectByValue("1");	
 			
+				
+			Select drpdowninfn = new Select (driver.findElement(By.id ("ddlinfants1")));
+			drpdowninfn.selectByValue("3");	
+			
+			Select drpdowncncs = new Select (driver.findElement(By.id ("concessionaryType1")));
+			drpdowncncs.selectByValue("Student");	
+			
+			Select drpdowncls = new Select (driver.findElement(By.id ("_classType1")));
+			drpdowncls.selectByValue("Economy");	
+			
+			driver.findElement(By.id("btnbooking")).click();
+			
+			
+			
+			
+					
 			// driver.findElement(By.xpath("//*[@id=\"loginPageId\"]/div[2]/div/form/div[1]/div/div/input")).sendKeys("UG3034");
 			// driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys("Neml@1234");
 			// driver.findElement(By.xpath("//*[@id=\"loginPageId\"]/div[2]/div/form/div[3]/button")).click();
